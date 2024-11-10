@@ -1,8 +1,11 @@
 from django.shortcuts import render
-from django.http import JsonResponse
+from django.http import JsonResponse , HttpResponse
 from django.contrib.auth.models import User
 import json
 from django.contrib.auth import authenticate , login , logout
+from .models import Patientdata , Treatment
+from django.core.serializers import serialize
+from rest_framework import status
 # Create your views here.
 def greetings(request):
     return JsonResponse({"message":"greetings from the django app"})
@@ -20,6 +23,7 @@ def createuser(request):
         return JsonResponse({"userdata":newuser})
     
 
+
 def systemlogin(request):
     if request.method == "POST" :
         way = json.loads(request.body)
@@ -36,5 +40,32 @@ def systemlogin(request):
 
 def systemlogout(request):
     logout(request)
+
+
+
+
+def registerpatient(request):
+    if request.method == "POST":
+        way = json.loads(request.body)
+        first_name = way.get("firtsname")
+        lastname = way.get("firtsname")
+        age = way.get("age")
+        gender = way.get("gender")
+        newuser = Patientdata(first_name=first_name,lastname=lastname,age=age,gender=gender)
+        newuser.save()
+        return JsonResponse({"new user":newuser})
+
+    else:
+        return JsonResponse({"message":"Invalid HTTP request"})
+    
+
+def getpatientslist(reques):
+    allusers= Patientdata.objects.all()
+    data = serialize("json",allusers,fields=("first_name","last_name","age","gender"))
+    return HttpResponse(data, content_type="application/json", status=status.HTTP_200_OK )
+
+
+
+
 
 
