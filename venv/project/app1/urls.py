@@ -11,5 +11,6 @@ urlpatterns = [
     path("patientslist" , views.getpatientslist , name="Patients list"  ),
     path("uploadpatientsdiagnosis/", views.uploadpatientdiagnosis ,name="upload diagnosis" ),
     path("updatetestresults/" , views.updatetestresults ,name="upate test results" ),
-    path("obtaintestresults",views.obtaintestresults , name="obtaintestresults"  )
+    path("obtaintestresults",views.obtaintestresults , name="obtaintestresults"  ),
+    path("djangodaraja/", views.djangodarajafuntion , name="Django daraja function" ),
 ]

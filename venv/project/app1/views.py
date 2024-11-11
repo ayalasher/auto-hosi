@@ -6,6 +6,7 @@ from django.contrib.auth import authenticate , login , logout
 from .models import Patientdata , Diagnosis , MedicalTest
 from django.core.serializers import serialize
 from rest_framework import status
+from django_daraja.mpesa.core import MpesaClient
 # Create your views here.
 def greetings(request):
     return JsonResponse({"message":"greetings from the django app"})
@@ -119,6 +120,18 @@ def obtaintestresults(request):
     medicaltestresults = MedicalTest.objects.all()
     data  = serialize("json",medicaltestresults,fields=("patient_details","malariatestresults","bactrerial_infection","viral_infetion","Fungal_infetion","red_blood_cells_conc","white_blood_cells_conc","platelets_conc"))
     return HttpResponse(data,content_type="application/json" , status=status.HTTP_200_OK )
+
+
+
+def djangodarajafuntion(request):
+    cl = MpesaClient()
+    phone_number = '0700111222'
+    amount = 1
+    account_reference = 'reference'
+    transaction_desc = 'Description'
+    callback_url = 'https://api.darajambili.com/express-payment'
+    response = cl.stk_push(phone_number, amount, account_reference, transaction_desc, callback_url)
+    return HttpResponse(response)
 
 
 
