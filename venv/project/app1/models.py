@@ -16,7 +16,7 @@ class Patientdata(models.Model):
 
 
 class MedicalTest(models.Model):
-    patient_name= models.ForeignKey(Patientdata, on_delete=models.CASCADE  )
+    patient_details= models.ForeignKey(Patientdata, on_delete=models.CASCADE  )
     malariatestresults = models.BooleanField(default=False)
     bactrerial_infection = models.BooleanField(default=False)
     viral_infetion = models.BooleanField(default=False)
@@ -30,7 +30,7 @@ class MedicalTest(models.Model):
 
 
 class Diagnosis(models.Model):
-    patient_name = models.ForeignKey(Patientdata,on_delete=models.CASCADE)
+    patient_details = models.ForeignKey(Patientdata,on_delete=models.CASCADE)
     diagnosis = models.TextField(max_length=10000)
-    tests = models.TextField(max_length=10000)
+    tests = models.TextField(max_length=10000)  
     testresults = models.ForeignKey(MedicalTest , on_delete=models.CASCADE)

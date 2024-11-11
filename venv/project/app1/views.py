@@ -3,7 +3,7 @@ from django.http import JsonResponse , HttpResponse
 from django.contrib.auth.models import User
 import json
 from django.contrib.auth import authenticate , login , logout
-from .models import Patientdata , Diagnosis
+from .models import Patientdata , Diagnosis , MedicalTest
 from django.core.serializers import serialize
 from rest_framework import status
 # Create your views here.
@@ -40,6 +40,7 @@ def systemlogin(request):
 
 def systemlogout(request):
     logout(request)
+    return JsonResponse({"message":"SUCCESS","status":status.HTTP_200_OK})
 
 
 
@@ -53,16 +54,34 @@ def registerpatient(request):
         gender = way.get("gender")
         newuser = Patientdata(first_name=first_name,lastname=lastname,age=age,gender=gender)
         newuser.save()
-        return JsonResponse({"new user":newuser})
+        return JsonResponse({"new user":newuser,"status":status.HTTP_201_CREATED})
 
     else:
         return JsonResponse({"message":"Invalid HTTP request"})
     
 
-def getpatientslist(reques):
+def getpatientslist(request):
     allusers= Patientdata.objects.all()
     data = serialize("json",allusers,fields=("first_name","last_name","age","gender"))
     return HttpResponse(data, content_type="application/json", status=status.HTTP_200_OK )
+
+
+
+# For the doctor
+def uploadpatientdiagnosis(request):
+    if request.method == "POST":
+        way = json.loads(request.body)
+        patientdetails = way.get("patients_details")
+        patientID = way.get("patientID")
+        patientID = patientID-1
+        patient_diagnosis = way.get("patient diagnosis")
+        patient_tests = way.get("patient tests")
+        currentpatient = Patientdata.objects.all()[patientID]
+        patient_resutls = MedicalTest.objects.all()[currentpatient]
+        uploadeddiagnosis = Diagnosis( patient_details=patientdetails ,diagnosis=patient_diagnosis,tests=patient_tests)
+        uploadeddiagnosis.save()
+        return HttpResponse(uploadeddiagnosis , content_type="application/json" , status=status.HTTP_201_CREATED  )
+
 
 
 
