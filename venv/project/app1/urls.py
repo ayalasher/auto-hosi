@@ -9,4 +9,7 @@ urlpatterns = [
     path("logout/" , views.systemlogout , name="user logout"  ),
     path("patientregistration/" , views.registerpatient  , name="Patient registration"  ),
     path("patientslist" , views.getpatientslist , name="Patients list"  ),
+    path("uploadpatientsdiagnosis/", views.uploadpatientdiagnosis ,name="upload diagnosis" ),
+    path("updatetestresults/" , views.updatetestresults ,name="upate test results" ),
+    path("obtaintestresults",views.obtaintestresults , name="obtaintestresults"  )
 ]

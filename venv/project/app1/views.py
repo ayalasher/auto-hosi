@@ -77,11 +77,48 @@ def uploadpatientdiagnosis(request):
         patient_diagnosis = way.get("patient diagnosis")
         patient_tests = way.get("patient tests")
         currentpatient = Patientdata.objects.all()[patientID]
-        patient_resutls = MedicalTest.objects.all()[currentpatient]
+        patient_results= MedicalTest.objects.all()[currentpatient]
         uploadeddiagnosis = Diagnosis( patient_details=patientdetails ,diagnosis=patient_diagnosis,tests=patient_tests)
         uploadeddiagnosis.save()
-        return HttpResponse(uploadeddiagnosis , content_type="application/json" , status=status.HTTP_201_CREATED  )
+        return HttpResponse(uploadeddiagnosis , content_type="application/json" , status=status.HTTP_201_CREATEDs)
+    else:
+        return JsonResponse({"message":"Invalid HTTP method"})
+    
 
+
+
+#funtion for the lab tech
+def updatetestresults(request):
+    way = json.loads(request.body)
+    patientdata = way.get("patients_data")
+    malariatestresults = way.get("Malaria_test_results")
+    bactrerial_infection = way.get("bacterial_infection")
+    viral_infetion = way.get("Viral_infection")
+    Fungal_infetion = way.get("Funal_infection")
+    red_blood_cells_conc = way.get("red_blood_cells")
+    white_blood_cells_conc = way.get("white_blood_cells")
+    platelets_conc = way.get("platelets_conc")
+    # The results for disease components are going to be of boolean nature
+    results_data = {
+        'patient_details':patientdata,
+        'malariatestresults':malariatestresults,
+        'bactrerial_infection': bactrerial_infection ,
+        'viral_infetion':viral_infetion,
+        'Fungal_infetion':Fungal_infetion,
+        'red_blood_cells_conc': red_blood_cells_conc ,
+        'white_blood_cells_conc': white_blood_cells_conc ,
+        'platelets_conc':platelets_conc
+    }
+    updatetestresultvariable = MedicalTest(**results_data)
+    updatetestresultvariable.save()
+    return JsonResponse({"message":"Items saved to the system ","status":status.HTTP_201_CREATED,"data":updatetestresultvariable})
+
+
+# For the doctor
+def obtaintestresults(request):
+    medicaltestresults = MedicalTest.objects.all()
+    data  = serialize("json",medicaltestresults,fields=("patient_details","malariatestresults","bactrerial_infection","viral_infetion","Fungal_infetion","red_blood_cells_conc","white_blood_cells_conc","platelets_conc"))
+    return HttpResponse(data,content_type="application/json" , status=status.HTTP_200_OK )
 
 
 

@@ -10,13 +10,13 @@ class Patientdata(models.Model):
         ('F','Female') ,
     ]
     gender = models.CharField(max_length=1,choices=gender_choices)
-    registration_date = models.DateField(default=datetime.date.today())
+    registration_date = models.DateField(auto_now=True)
 
 
 
 
 class MedicalTest(models.Model):
-    patient_details= models.ForeignKey(Patientdata, on_delete=models.CASCADE  )
+    patient_details= models.ForeignKey(Patientdata, on_delete=models.CASCADE)
     malariatestresults = models.BooleanField(default=False)
     bactrerial_infection = models.BooleanField(default=False)
     viral_infetion = models.BooleanField(default=False)
