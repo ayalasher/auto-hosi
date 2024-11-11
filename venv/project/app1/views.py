@@ -3,7 +3,7 @@ from django.http import JsonResponse , HttpResponse
 from django.contrib.auth.models import User
 import json
 from django.contrib.auth import authenticate , login , logout
-from .models import Patientdata , Treatment
+from .models import Patientdata , Diagnosis
 from django.core.serializers import serialize
 from rest_framework import status
 # Create your views here.
