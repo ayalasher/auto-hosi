@@ -12,6 +12,7 @@ def greetings(request):
     return JsonResponse({"message":"greetings from the django app"})
 
 
+# Hospial personnel......
 def createuser(request):
     if request.method == "POST" :
         way = json.loads(request.body)
@@ -55,10 +56,12 @@ def registerpatient(request):
         gender = way.get("gender")
         newuser = Patientdata(first_name=first_name,lastname=lastname,age=age,gender=gender)
         newuser.save()
+        
         return JsonResponse({"new user":newuser,"status":status.HTTP_201_CREATED})
 
     else:
         return JsonResponse({"message":"Invalid HTTP request"})
+    # Python comment
     
 
 def getpatientslist(request):
