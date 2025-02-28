@@ -1,6 +1,10 @@
 from django.db import models
 import datetime
 # Create your models here.
+
+
+# Model for the Users of the system. Hospital staff
+
 class Patientdata(models.Model):
     first_name= models.CharField(max_length=200)
     last_name = models.CharField(max_length=200)
