@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import JsonResponse , HttpResponse
-from django.contrib.auth.models import User
+# from django.contrib.auth.models import User
 import json
 from django.contrib.auth import authenticate , login , logout
 from .models import Patientdata , Diagnosis , MedicalTest , Customuser
@@ -20,9 +20,11 @@ def createuser(request):
         useremail = way.get("useremail")
         password = way.get("password")
         role = way.get("userrole")
-        newuser = User.objects.create_user(username=username,useremail=useremail,password=password,first_name=role)
+        newuser = Customuser.objects.create_user(username=username,useremail=useremail,password=password,role=role)
         newuser.save()
         return JsonResponse({"userdata":newuser})
+    else:
+        return JsonResponse({"message":"Auth error"})
     
 
 
@@ -35,7 +37,7 @@ def systemlogin(request):
         user = authenticate(request,username=username,password=userpassword)
         if user is not None :
             login(request,user)
-            return JsonResponse({"username":user.USERNAME_FIELD,"role":userrole})
+            return JsonResponse({"username":user.USERNAME_FIELD,"role":user.role})
         else:
             JsonResponse({"message":"Invalid user credentials"})
 
@@ -91,7 +93,7 @@ def uploadpatientdiagnosis(request):
 
 
 
-#funtion for the lab tech
+#function for the lab tech
 def updatetestresults(request):
     way = json.loads(request.body)
     patientdata = way.get("patients_data")
