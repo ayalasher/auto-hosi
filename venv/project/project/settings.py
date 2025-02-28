@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     'django_daraja',
 ]
 
+AUTH_USER_MODEL = 'app1.Customuser'
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',

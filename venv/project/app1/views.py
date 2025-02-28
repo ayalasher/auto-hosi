@@ -3,7 +3,7 @@ from django.http import JsonResponse , HttpResponse
 from django.contrib.auth.models import User
 import json
 from django.contrib.auth import authenticate , login , logout
-from .models import Patientdata , Diagnosis , MedicalTest
+from .models import Patientdata , Diagnosis , MedicalTest , Customuser
 from django.core.serializers import serialize
 from rest_framework import status
 from django_daraja.mpesa.core import MpesaClient
@@ -12,7 +12,7 @@ def greetings(request):
     return JsonResponse({"message":"greetings from the django app"})
 
 
-# Hospial personnel......
+# Hospital personnel......
 def createuser(request):
     if request.method == "POST" :
         way = json.loads(request.body)
@@ -56,7 +56,7 @@ def registerpatient(request):
         gender = way.get("gender")
         newuser = Patientdata(first_name=first_name,lastname=lastname,age=age,gender=gender)
         newuser.save()
-        
+
         return JsonResponse({"new user":newuser,"status":status.HTTP_201_CREATED})
 
     else:
