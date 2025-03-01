@@ -54,3 +54,10 @@ class Diagnosis(models.Model):
     diagnosis = models.TextField(max_length=10000)
     tests = models.TextField(max_length=10000)  
     testresults = models.ForeignKey(MedicalTest , on_delete=models.CASCADE)
+
+
+class Paymentdata(models.Model):
+    patients_details = models.ForeignKey(Patientdata , on_delete=models.CASCADE)
+    totalbill = models.IntegerField()
+    amountpaid = models.IntegerField()
+    

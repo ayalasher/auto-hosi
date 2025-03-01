@@ -3,7 +3,7 @@ from django.http import JsonResponse , HttpResponse
 # from django.contrib.auth.models import User
 import json
 from django.contrib.auth import authenticate , login , logout
-from .models import Patientdata , Diagnosis , MedicalTest , Customuser
+from .models import Patientdata , Diagnosis , MedicalTest , Customuser , Paymentdata
 from django.core.serializers import serialize
 from rest_framework import status
 from django_daraja.mpesa.core import MpesaClient
@@ -66,6 +66,7 @@ def registerpatient(request):
     # Python comment
     
 
+# get patients data....
 def getpatientslist(request):
     allusers= Patientdata.objects.all()
     data = serialize("json",allusers,fields=("first_name","last_name","age","gender"))
@@ -106,7 +107,7 @@ def updatetestresults(request):
     platelets_conc = way.get("platelets_conc")
     # The results for disease components are going to be of boolean nature
     results_data = {
-        'patient_details':patientdata,
+        # 'patient_details':patientdata,
         'malariatestresults':malariatestresults,
         'bactrerial_infection': bactrerial_infection ,
         'viral_infetion':viral_infetion,
@@ -120,7 +121,7 @@ def updatetestresults(request):
     return JsonResponse({"message":"Items saved to the system ","status":status.HTTP_201_CREATED,"data":updatetestresultvariable})
 
 
-# For the doctor
+# For the doctor and other  wokers...
 def obtaintestresults(request):
     medicaltestresults = MedicalTest.objects.all()
     data  = serialize("json",medicaltestresults,fields=("patient_details","malariatestresults","bactrerial_infection","viral_infetion","Fungal_infetion","red_blood_cells_conc","white_blood_cells_conc","platelets_conc"))
@@ -128,6 +129,8 @@ def obtaintestresults(request):
 
 
 
+# payments intergration
+# Prompt user payment....
 def djangodarajafuntion(request):
     if request.method =="POST":
         way = json.loads("Phone number")
@@ -142,6 +145,17 @@ def djangodarajafuntion(request):
         response = cl.stk_push(phone_number, amount, account_reference, transaction_desc, callback_url)
         return HttpResponse(response)
 
+def getpaymentdetails(request):
+    if request.method =="GET" :
+        detailsway = json.loads(request.body)
+        patientid = detailsway.get("patient_ID")
+        # Get payment details for the user...
+        paymentdetails = Patientdata.objects.all()[patientid]
+        balance = paymentdetails.totalbill - paymentdetails.amountpaid
+        data = serialize("json",paymentdetails,fields=("patients_details","totalbill","amountpaid",balance))
+        return HttpResponse(data, content_type="application/json" , status=status.HTTP_200_OK )
+    else:
+        return JsonResponse({"message":"Invalid HTTP method"})
 
 
 
