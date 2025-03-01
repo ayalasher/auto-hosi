@@ -72,6 +72,17 @@ def getpatientslist(request):
     data = serialize("json",allusers,fields=("first_name","last_name","age","gender"))
     return HttpResponse(data, content_type="application/json", status=status.HTTP_200_OK )
 
+def patientserach(request):
+    if request.method == "GET":
+        way = json.loads(request.body)
+        first_name = way.get("firstname")
+        last_name = way.get("firstname")
+        Singlepatient = Patientdata.objects.get(first_name=first_name, last_name=last_name)
+        data = serialize("json" , Singlepatient , fields=("first_name" , "last_name" , "age"  , "gender" ,"registration_date " ) )
+        return HttpResponse(data , content_type="application/json" , status = status.HTTP_200_OK)
+    else:
+        return JsonResponse({"message":"Invaid HTTP method"})
+
 
 
 # For the doctor

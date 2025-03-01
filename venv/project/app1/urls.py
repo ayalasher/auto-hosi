@@ -13,4 +13,5 @@ urlpatterns = [
     path("updatetestresults/" , views.updatetestresults ,name="upate test results" ),
     path("obtaintestresults",views.obtaintestresults , name="obtaintestresults"  ),
     path("djangodaraja/", views.djangodarajafuntion , name="Django daraja function" ),
+    path("getpaymentdetails/",views.getpaymentdetails , name="get payment details"),
 ]
