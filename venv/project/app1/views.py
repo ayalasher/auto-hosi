@@ -55,13 +55,14 @@ def registerpatient(request):
     if request.method == "POST":
         way = json.loads(request.body)
         first_name = way.get("firtsname")
-        lastname = way.get("firtsname")
+        lastname = way.get("lastname")
         age = way.get("age")
         gender = way.get("gender")
-        newuser = Patientdata(first_name=first_name,lastname=lastname,age=age,gender=gender)
+        phone_number = way.get("phone_number")
+        newuser = Patientdata(first_name=first_name,lastname=lastname,age=age,gender=gender , phone_number =phone_number )
         newuser.save()
-
-        return JsonResponse({"new user":newuser,"status":status.HTTP_201_CREATED})
+        usersaved = Patientdata.objects.get(first_name=first_name , last_name = lastname)
+        return JsonResponse({"new user":usersaved,"status":status.HTTP_201_CREATED})
 
     else:
         return JsonResponse({"message":"Invalid HTTP request"})
@@ -71,7 +72,7 @@ def registerpatient(request):
 # get patients data....
 def getpatientslist(request):
     allusers= Patientdata.objects.all()
-    data = serialize("json",allusers,fields=("first_name","last_name","age","gender"))
+    data = serialize("json",allusers,fields=("first_name","last_name","age","gender","phone_number"))
     return HttpResponse(data, content_type="application/json", status=status.HTTP_200_OK )
 
 def patientserach(request):
@@ -80,7 +81,7 @@ def patientserach(request):
         first_name = way.get("firstname")
         last_name = way.get("firstname")
         Singlepatient = Patientdata.objects.get(first_name=first_name, last_name=last_name)
-        data = serialize("json" , Singlepatient , fields=("first_name" , "last_name" , "age"  , "gender" ,"registration_date " ) )
+        data = serialize("json" , Singlepatient , fields=("first_name" , "last_name" , "age"  , "gender" ,"registration_date " , "phone_number" ) )
         return HttpResponse(data , content_type="application/json" , status = status.HTTP_200_OK)
     else:
         return JsonResponse({"message":"Invaid HTTP method"})

@@ -25,6 +25,7 @@ class Patientdata(models.Model):
     first_name= models.CharField(max_length=200)
     last_name = models.CharField(max_length=200)
     age = models.CharField(max_length=200)
+    phone_number = models.IntegerField(max_length=20)
     gender_choices =[
         ('M','Male') , 
         ('F','Female') ,
