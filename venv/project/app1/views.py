@@ -22,7 +22,8 @@ def createuser(request):
         role = way.get("userrole")
         newuser = Customuser.objects.create_user(username=username,useremail=useremail,password=password,role=role)
         newuser.save()
-        return JsonResponse({"userdata":newuser})
+        result = Customuser.object.get(username=username, useremail=useremail)
+        return JsonResponse({"userdata":result, "status":status.HTTP_201_CREATED})
     else:
         return JsonResponse({"message":"Auth error"})
     
@@ -37,7 +38,8 @@ def systemlogin(request):
         user = authenticate(request,username=username,password=userpassword)
         if user is not None :
             login(request,user)
-            return JsonResponse({"username":user.USERNAME_FIELD,"role":user.role})
+            userdata = Customuser.objects.get(username=username)
+            return JsonResponse({"userdata":userdata,"status":status.HTTP_200_OK})
         else:
             JsonResponse({"message":"Invalid user credentials"})
 
