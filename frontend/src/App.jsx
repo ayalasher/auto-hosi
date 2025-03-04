@@ -5,6 +5,7 @@ import Welcome from "./components/Welcome";
 import Login from "./components/login";
 import Signuo from "./components/Signuo";
 import ErrorScreen from "./components/Error.jsx";
+import styles from "./components/styles.module.css";
 
 function App() {
   const [count, setCount] = useState(0);

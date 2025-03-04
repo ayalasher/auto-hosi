@@ -5,6 +5,7 @@ import { FaHeartCirclePlus } from "react-icons/fa6";
 import { FaUser } from "react-icons/fa";
 import { MdLogout } from "react-icons/md";
 import styles from "./styles.module.css";
+import Sidebar from "./Sidebar";
 export default function Welcome() {
   const location = useLocation();
   const navigate = useNavigate();
@@ -49,6 +50,10 @@ export default function Welcome() {
         </div>
       </div>
       {/* <hr color="green" size="2" /> */}
+      <div className={styles.hrline}></div>
+      {/* <div> */}
+      <Sidebar />
+      {/* </div> */}
     </div>
   );
 }
