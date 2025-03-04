@@ -5,15 +5,58 @@ import { RiLockPasswordFill } from "react-icons/ri";
 import { FaUserMd } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import { Link } from "react-router-dom";
+import { useState } from "react";
+// import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 export default function Signuo() {
+  // Efficient usState for all the data items...
+  const [userdata, setUserdata] = useState({
+    username: "",
+    useremail: "",
+    userpassword: "",
+    userrole: "",
+    // confirmpassword: "",
+  });
+
+  const [confirmpassword, setConfirmpassword] = useState("");
+  const navigation = useNavigate();
+
+  function onsubmit(e) {
+    e.preventDefault(); //Prevents page reload...
+  }
+
+  async function signupuser() {
+    if (userdata.userpassword !== confirmpassword) {
+      alert("Passwords do not match");
+    } else {
+      try {
+        const response = await axios.post(
+          "http://localhost:8000/user/signup/",
+          userdata,
+          {
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
+        console.log("Response", response.data);
+        navigation("/");
+      } catch (error) {
+        console.log("Error:", error);
+      }
+    }
+    // e.preventDefault(); // Prevents page reload
+  }
+
   return (
     <div className={styles.loginscreen}>
       <h1>
         Auto Hosi System <FaHeartCirclePlus size={25} />{" "}
       </h1>
       <h3>Sign up</h3>
-      <form className={styles.loginform} action="submit">
+      <form onSubmit={onsubmit} className={styles.loginform}>
         <fieldset className={styles.fieldset}>
           <label className={styles.labels} htmlFor="">
             User name
@@ -23,6 +66,9 @@ export default function Signuo() {
             <CiUser size={20} color="#7f8c98" />
             <input
               className={styles.inputs}
+              onChange={(e) =>
+                setUserdata({ ...userdata, username: e.target.value })
+              }
               type="text"
               //   value=""
               placeholder="Enter your  name"
@@ -41,7 +87,10 @@ export default function Signuo() {
             <MdEmail size={20} color="#7f8c98" />
             <input
               className={styles.inputs}
-              type="text"
+              type="email"
+              onChange={(e) =>
+                setUserdata({ ...userdata, useremail: e.target.value })
+              }
               //   value=""
               placeholder="Enter your Email"
               color="green"
@@ -62,6 +111,9 @@ export default function Signuo() {
               type="text"
               //   value=""
               placeholder="Enter your role"
+              onChange={(e) =>
+                setUserdata({ ...userdata, userrole: e.target.value })
+              }
               required
             />
           </div>
@@ -78,6 +130,9 @@ export default function Signuo() {
               type="password"
               //   value=""
               placeholder="Enter your password"
+              onChange={(e) =>
+                setUserdata({ ...userdata, userpassword: e.target.value })
+              }
               required
             />
           </div>
@@ -95,11 +150,16 @@ export default function Signuo() {
               //   value=""
               placeholder="Confirm your password"
               required
+              onChange={(e) => setConfirmpassword(e.target.value)}
             />
           </div>
           <br />
         </fieldset>
-        <button className={styles.loginsignupbutton} type="submit">
+        <button
+          onClick={signupuser}
+          className={styles.loginsignupbutton}
+          type="submit"
+        >
           Sign up
         </button>
         <div className={styles.bottomsection}>

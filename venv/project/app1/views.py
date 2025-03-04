@@ -7,23 +7,29 @@ from .models import Patientdata , Diagnosis , MedicalTest , Customuser , Payment
 from django.core.serializers import serialize
 from rest_framework import status
 from django_daraja.mpesa.core import MpesaClient
+from django.views.decorators.csrf import csrf_exempt
 # Create your views here.
 def greetings(request):
     return JsonResponse({"message":"greetings from the django app"})
 
 
 # Hospital personnel......
+@csrf_exempt
 def createuser(request):
     if request.method == "POST" :
         way = json.loads(request.body)
         username = way.get("username")
         useremail = way.get("useremail")
-        password = way.get("password")
+        password = way.get("userpassword")
         role = way.get("userrole")
-        newuser = Customuser.objects.create_user(username=username,useremail=useremail,password=password,role=role)
+        newuser = Customuser.objects.create_user(username=username,email=useremail,password=password,role=role)
         newuser.save()
-        result = Customuser.object.get(username=username, useremail=useremail)
-        return JsonResponse({"userdata":result, "status":status.HTTP_201_CREATED})
+        result = Customuser.objects.get(email=useremail)
+        return JsonResponse({"userdata": {
+            "username":result.username ,
+            "email":result.email,
+            "role":result.role,
+        } , "status":status.HTTP_201_CREATED})
     else:
         return JsonResponse({"message":"Auth error"})
     
