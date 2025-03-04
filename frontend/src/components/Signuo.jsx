@@ -4,6 +4,7 @@ import { CiUser } from "react-icons/ci";
 import { RiLockPasswordFill } from "react-icons/ri";
 import { FaUserMd } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
+import { Link } from "react-router-dom";
 
 export default function Signuo() {
   return (
@@ -99,8 +100,15 @@ export default function Signuo() {
           <br />
         </fieldset>
         <button className={styles.loginsignupbutton} type="submit">
-          Login
+          Sign up
         </button>
+        <div className={styles.bottomsection}>
+          <b>Have an account ?</b>
+          {"   "}
+          <Link className={styles.loginsignupbutton2} to={"/Login"}>
+            Log in
+          </Link>
+        </div>
       </form>
     </div>
   );

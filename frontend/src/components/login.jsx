@@ -3,6 +3,7 @@ import { FaHeartCirclePlus } from "react-icons/fa6";
 import { CiUser } from "react-icons/ci";
 import { RiLockPasswordFill } from "react-icons/ri";
 import { FaUserMd } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 export default function Login() {
   return (
@@ -63,8 +64,15 @@ export default function Login() {
           <br />
         </fieldset>
         <button className={styles.loginsignupbutton} type="submit">
-          Login
+          Log in
         </button>
+        <div className={styles.bottomsection}>
+          <b>Have no account ?</b>
+          {"   "}
+          <Link className={styles.loginsignupbutton2} to={"/Signup"}>
+            Sign up
+          </Link>
+        </div>
       </form>
     </div>
   );

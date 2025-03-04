@@ -13,7 +13,7 @@ function App() {
     <div>
       <Routes>
         <Route exact path="" element={<Welcome />} />
-        <Route path="/login" element={<Login />} />
+        <Route path="/Login" element={<Login />} />
         <Route path="/Signup" element={<Signuo />} />
         <Route path="*" element={<ErrorScreen />} />
       </Routes>
