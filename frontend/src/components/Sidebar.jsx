@@ -7,25 +7,27 @@ import { GiSpanner } from "react-icons/gi";
 export default function Sidebar() {
   return (
     <div className={styles.middlesection}>
-      <div>
-        {" "}
+      <div className={styles.somesection0}>
         <div className={styles.somesection}>
-          {" "}
-          <FaHospitalUser />
-          <p className={styles.sidebartxt}>Patients</p>{" "}
+          <FaHospitalUser size={25} />
+          <p className={styles.sidebartxt}>Patients</p>
         </div>
         <div className={styles.somesection}>
-          <TiUserAdd />
+          <TiUserAdd size={25} />
           <p className={styles.sidebartxt}>Register Patients</p>
         </div>
         <div className={styles.somesection}>
-          <FaCalendarPlus />
-          <p className={styles.sidebartxt}>My Appointmtnts</p>
+          <FaCalendarPlus size={25} />
+          <p className={styles.sidebartxt}>My Appointments</p>
+        </div>
+        <div className={styles.somesection}>
+          <GiSpanner size={25} />
+          <p className={styles.sidebartxt}>Tech Support</p>
         </div>
       </div>
-      <div className={styles.somesection}>
-        <GiSpanner />
-        <p className={styles.sidebartxt}>Tech Support</p>
+
+      <div>
+        <p>Testing hapa kule</p>
       </div>
     </div>
   );
