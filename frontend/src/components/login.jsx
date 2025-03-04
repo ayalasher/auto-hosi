@@ -34,7 +34,11 @@ export default function Login() {
       );
       console.log("Response", response.data);
       if (response.data.userdata != null) {
-        navigate_to("/");
+        navigate_to("/", {
+          state: {
+            userdata: response.data.userdata,
+          },
+        });
       } else {
         alert(`${response.data.message}.Try again !  `);
       }
