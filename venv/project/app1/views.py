@@ -35,19 +35,27 @@ def createuser(request):
     
 
 
+@csrf_exempt
 def systemlogin(request):
     if request.method == "POST" :
         way = json.loads(request.body)
         username = way.get("username")
-        userpassword = way.get("password")
+        userpassword = way.get("userpassword")
         userrole = way.get("userrole")
         user = authenticate(request,username=username,password=userpassword)
         if user is not None :
             login(request,user)
             userdata = Customuser.objects.get(username=username)
-            return JsonResponse({"userdata":userdata,"status":status.HTTP_200_OK})
+            return JsonResponse({"userdata":{
+                "username":userdata.username,
+                "email":userdata.email,
+                "role":userdata.role
+            },"status":status.HTTP_200_OK})
         else:
-            JsonResponse({"message":"Invalid user credentials"})
+            return  JsonResponse({"message":"Invalid user credentials"})
+        
+    # else:
+    #     return JsonResponse({"message":"Error logging user in"})
 
 
 def systemlogout(request):
