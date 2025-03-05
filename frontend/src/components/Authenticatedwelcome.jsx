@@ -6,8 +6,7 @@ import { FaUser } from "react-icons/fa";
 import { MdLogout } from "react-icons/md";
 import styles from "./styles.module.css";
 import Sidebar from "./Sidebar";
-import { Link } from "react-router-dom";
-export default function Welcome() {
+export default function Authnticatedwelcome() {
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -25,11 +24,16 @@ export default function Welcome() {
             <p>
               <b>Username:</b>
             </p>
-            <p>Log in for details</p>
+            <p>
+              {" "}
+              {userdata.username
+                ? userdata.username
+                : "User not logged in "}{" "}
+            </p>
             <p className={styles.textstyling}>
               <b>user role:</b>
             </p>
-            <p> Log into the system for details </p>
+            <p> {userdata.role ? userdata.role : "User not logged in !"} </p>
           </div>
 
           <div className={styles.sgc2}>
@@ -47,12 +51,6 @@ export default function Welcome() {
               {" "}
               <MdLogout color={"#CBCBCB"} size={25} />{" "}
             </button>
-            <Link className={styles.linkbtns} title="Log in" to={"/Login"}>
-              Log in
-            </Link>
-            <Link className={styles.linkbtns} title="Sign up" to={"/Signup"}>
-              Sign up
-            </Link>
           </div>
         </div>
       </div>
@@ -60,7 +58,6 @@ export default function Welcome() {
       <div className={styles.hrline}></div>
       {/* <div> */}
       <Sidebar />
-      {/* <p>Log in to use system.</p> */}
       {/* </div> */}
     </div>
   );

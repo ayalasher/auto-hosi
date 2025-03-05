@@ -178,7 +178,7 @@ body {
 .sgc2 {
   display: flex;
   flex-direction: row;
-  align-items: flex-end;
+  align-items: center;
   justify-content: center;
   text-align: center;
   padding: 10px;
@@ -225,17 +225,19 @@ body {
   align-items: center;
   /* Horizontal */
   justify-content: flex-start;
+  padding: 10px;
   /* width: 100%;
   height: 100%; */
 }
 
-.somesection :hover {
+.somesection:hover {
   /* display: flex;
   flex-direction: row;
   align-items: center; */
   /* Horizontal */
   /* justify-content: flex-start; */
-  background-color: red;
+  background-color: #e3e3e3;
+  /* padding: 10px; */
   /* padding-top: 10px;
   padding-bottom: 10px; */
   /* width: 100%;
@@ -244,4 +246,23 @@ body {
 .middlescetionparent {
   display: flex;
   flex-direction: row;
+}
+
+.linkbtns {
+  /* display: flex;
+  align-items: center;
+  justify-content: center; */
+  background-color: #3863ff;
+  border: none;
+  border-radius: 10px;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 7px;
+  padding-bottom: 7px;
+  text-decoration: none;
+  margin-left: 10px;
+}
+
+.linkbtns:hover {
+  background-color: #7f9bff;
 }

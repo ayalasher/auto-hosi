@@ -42,7 +42,7 @@ export default function Signuo() {
           }
         );
         console.log("Response", response.data);
-        navigation("/", {
+        navigation("/Home", {
           state: {
             userdata: response.data.userdata,
           },
