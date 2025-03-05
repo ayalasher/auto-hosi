@@ -3,31 +3,35 @@ import { FaHospitalUser } from "react-icons/fa";
 import { TiUserAdd } from "react-icons/ti";
 import { FaCalendarPlus } from "react-icons/fa";
 import { GiSpanner } from "react-icons/gi";
+import { Link } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 export default function Sidebar() {
+  const location = useLocation();
   return (
     <div className={styles.middlesection}>
       <div className={styles.somesection0}>
-        <div className={styles.somesection}>
+        <Link className={styles.somesection}>
           <FaHospitalUser size={25} />
           <p className={styles.sidebartxt}>Patients</p>
-        </div>
-        <div className={styles.somesection}>
+        </Link>
+        <Link className={styles.somesection}>
           <TiUserAdd size={25} />
           <p className={styles.sidebartxt}>Register Patients</p>
-        </div>
-        <div className={styles.somesection}>
+        </Link>
+        <Link className={styles.somesection}>
           <FaCalendarPlus size={25} />
           <p className={styles.sidebartxt}>My Appointments</p>
-        </div>
-        <div className={styles.somesection}>
+        </Link>
+        <Link className={styles.somesection}>
           <GiSpanner size={25} />
           <p className={styles.sidebartxt}>Tech Support</p>
-        </div>
+        </Link>
       </div>
 
-      <div>
-        <p>Testing hapa kule</p>
+      <div className={styles.somesection0_2}>
+        {/* <p>Testing hapa kule</p> */}
+        <p> {location.pathname} </p>
       </div>
     </div>
   );

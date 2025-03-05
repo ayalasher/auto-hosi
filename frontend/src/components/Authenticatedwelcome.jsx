@@ -6,9 +6,18 @@ import { FaUser } from "react-icons/fa";
 import { MdLogout } from "react-icons/md";
 import styles from "./styles.module.css";
 import Sidebar from "./Sidebar";
+import Patients from "./Patients";
 export default function Authnticatedwelcome() {
+  const [section, setSection] = useState("");
   const location = useLocation();
   const navigate = useNavigate();
+
+  //   function patialrendering() {
+  //     if (location.pathname == "/home") {
+  //       return <Patients />;
+  //     } else {
+  //     }
+  //   }
 
   // get the user data from the log in and the sign up page....
   const { userdata } = location.state || {};

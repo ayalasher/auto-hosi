@@ -60,7 +60,7 @@ export default function Welcome() {
       <div className={styles.hrline}></div>
       {/* <div> */}
       <Sidebar />
-      {/* <p>Log in to use system.</p> */}
+      <p>Log in to use system. </p>
       {/* </div> */}
     </div>
   );
