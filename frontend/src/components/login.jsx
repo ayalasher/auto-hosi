@@ -7,8 +7,11 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setuser } from "../redux/store";
 
 export default function Login() {
+  const dispatch = useDispatch();
   const [userdata, setuserdata] = useState({
     username: "",
     userpassword: "",
@@ -33,6 +36,8 @@ export default function Login() {
         }
       );
       console.log("Response", response.data);
+      // Setting the data from the login process
+      dispatch(setuser(response.data));
       if (response.data.userdata != null) {
         navigate_to("/Home/patients", {
           state: {

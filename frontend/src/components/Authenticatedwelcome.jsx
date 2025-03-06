@@ -8,10 +8,13 @@ import styles from "./styles.module.css";
 import Sidebar from "./Sidebar";
 import { Outlet } from "react-router-dom";
 import Patients from "./Patients";
+import { useSelector } from "react-redux";
 export default function Authnticatedwelcome() {
   const [section, setSection] = useState("");
   const location = useLocation();
   const navigate = useNavigate();
+
+  const userdatafromredux = useSelector((state) => state.userdata);
 
   //   function patialrendering() {
   //     if (location.pathname == "/home") {
@@ -34,23 +37,16 @@ export default function Authnticatedwelcome() {
             <p>
               <b>Username:</b>
             </p>
-            {/* <p>
-              {" "}
-              {userdata.username
-                ? userdata.username
-                : "User not logged in "}{" "}
-            </p> */}
+            <p> {userdatafromredux.userdata.username} </p>
             <p className={styles.textstyling}>
               <b>user role:</b>
             </p>
-            {/* <p> {userdata.role ? userdata.role : "User not logged in !"} </p> */}
+            <p> {userdatafromredux.userdata.role} </p>
+            {/* <p>hello</p> */}
           </div>
 
           <div className={styles.sgc2}>
-            <button
-              // onClick={alert("hakuna mchezo raondiii")}
-              className={styles.topbuttons}
-            >
+            <button className={styles.topbuttons}>
               {" "}
               <FaUser color={"#CBCBCB"} size={25} />{" "}
             </button>
