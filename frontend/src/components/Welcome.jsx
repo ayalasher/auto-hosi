@@ -59,8 +59,11 @@ export default function Welcome() {
       {/* <hr color="green" size="2" /> */}
       <div className={styles.hrline}></div>
       {/* <div> */}
-      <Sidebar />
-      <p>Log in to use system. </p>
+      <div className={styles.logintousesystem}>
+        <Sidebar />
+        <p className={styles.logintxt} >Log in to use system. </p>
+      </div>
+
       {/* </div> */}
     </div>
   );

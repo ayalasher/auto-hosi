@@ -31,7 +31,8 @@ export default function Sidebar() {
 
       <div className={styles.somesection0_2}>
         {/* <p>Testing hapa kule</p> */}
-        <p> {location.pathname} </p>
+        {/* <p> {location.pathname} </p> */}
+        {/* <p>Vindu vi collapsanga...</p> */}
       </div>
     </div>
   );

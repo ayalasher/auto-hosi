@@ -278,3 +278,20 @@ body {
   /* width: 100vh; */
   /* background-color: yellow; */
 }
+
+.logintousesystem {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+  height: 100vh;
+}
+
+.logintxt {
+  font-size: larger;
+  font-weight: bolder;
+  text-align: start;
+  margin-right: 70px;
+}
