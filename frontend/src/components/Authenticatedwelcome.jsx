@@ -6,6 +6,7 @@ import { FaUser } from "react-icons/fa";
 import { MdLogout } from "react-icons/md";
 import styles from "./styles.module.css";
 import Sidebar from "./Sidebar";
+import { Outlet } from "react-router-dom";
 import Patients from "./Patients";
 export default function Authnticatedwelcome() {
   const [section, setSection] = useState("");
@@ -33,16 +34,16 @@ export default function Authnticatedwelcome() {
             <p>
               <b>Username:</b>
             </p>
-            <p>
+            {/* <p>
               {" "}
               {userdata.username
                 ? userdata.username
                 : "User not logged in "}{" "}
-            </p>
+            </p> */}
             <p className={styles.textstyling}>
               <b>user role:</b>
             </p>
-            <p> {userdata.role ? userdata.role : "User not logged in !"} </p>
+            {/* <p> {userdata.role ? userdata.role : "User not logged in !"} </p> */}
           </div>
 
           <div className={styles.sgc2}>
@@ -66,7 +67,12 @@ export default function Authnticatedwelcome() {
       {/* <hr color="green" size="2" /> */}
       <div className={styles.hrline}></div>
       {/* <div> */}
-      <Sidebar />
+
+      <div className={styles.authenticatedwelcomemiddlesection}>
+        <Sidebar />
+        <Outlet />
+      </div>
+
       {/* </div> */}
     </div>
   );

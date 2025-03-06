@@ -19,12 +19,14 @@ function App() {
     <div>
       <Routes>
         <Route exact path="" element={<Welcome />} />
-        <Route path="/Home" element={<Authnticatedwelcome />} />
+        <Route path="/Home" element={<Authnticatedwelcome />}>
+          <Route index path={"/Home/patients"} element={<Patients />} />
+          <Route path="register-patients" element={<Registerpatients />} />
+          <Route path="appointments" element={<Myappointments />} />
+          <Route path="tech-support" element={<Techsupport />} />
+        </Route>
         <Route path="/Login" element={<Login />} />
-        <Route path="/Home/patients" element={<Patients />} />
-        <Route path="/Home/register-patients" element={<Registerpatients />} />
-        <Route path="/Home/appointments" element={<Myappointments />} />
-        <Route path="/Home/tech-support" element={<Techsupport />} />
+
         <Route path="/Signup" element={<Signuo />} />
         <Route path="*" element={<ErrorScreen />} />
       </Routes>

@@ -206,7 +206,7 @@ body {
   /* flex: 1; */
   display: flex;
   flex-direction: row;
-  width: 100%;
+  width: 50%;
   height: 100%;
   /* background-color: #cbcbcb; */
   /* padding: 15px; */
@@ -294,4 +294,11 @@ body {
   font-weight: bolder;
   text-align: start;
   margin-right: 70px;
+}
+
+.authenticatedwelcomemiddlesection {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 100%;
 }

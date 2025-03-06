@@ -34,7 +34,7 @@ export default function Login() {
       );
       console.log("Response", response.data);
       if (response.data.userdata != null) {
-        navigate_to("/Home", {
+        navigate_to("/Home/patients", {
           state: {
             userdata: response.data.userdata,
           },
