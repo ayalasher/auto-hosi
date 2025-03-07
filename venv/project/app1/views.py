@@ -65,7 +65,7 @@ def systemlogout(request):
 
 
 
-
+@csrf_exempt
 def registerpatient(request):
     if request.method == "POST":
         way = json.loads(request.body)
@@ -85,11 +85,14 @@ def registerpatient(request):
     
 
 # get patients data....
+@csrf_exempt
 def getpatientslist(request):
     allusers= Patientdata.objects.all()
     data = serialize("json",allusers,fields=("first_name","last_name","age","gender","phone_number"))
     return HttpResponse(data, content_type="application/json", status=status.HTTP_200_OK )
 
+
+@csrf_exempt
 def patientserach(request):
     if request.method == "GET":
         way = json.loads(request.body)
@@ -104,6 +107,7 @@ def patientserach(request):
 
 
 # For the doctor
+@csrf_exempt
 def uploadpatientdiagnosis(request):
     if request.method == "POST":
         way = json.loads(request.body)
@@ -124,6 +128,7 @@ def uploadpatientdiagnosis(request):
 
 
 #function for the lab tech
+@csrf_exempt
 def updatetestresults(request):
     way = json.loads(request.body)
     patientdata = way.get("patients_data")
@@ -151,6 +156,7 @@ def updatetestresults(request):
 
 
 # For the doctor and other  wokers...
+@csrf_exempt
 def obtaintestresults(request):
     medicaltestresults = MedicalTest.objects.all()
     data  = serialize("json",medicaltestresults,fields=("patient_details","malariatestresults","bactrerial_infection","viral_infetion","Fungal_infetion","red_blood_cells_conc","white_blood_cells_conc","platelets_conc"))
@@ -160,6 +166,7 @@ def obtaintestresults(request):
 
 # payments intergration
 # Prompt user payment....
+@csrf_exempt
 def djangodarajafuntion(request):
     if request.method =="POST":
         way = json.loads("Phone number")
@@ -174,6 +181,8 @@ def djangodarajafuntion(request):
         response = cl.stk_push(phone_number, amount, account_reference, transaction_desc, callback_url)
         return HttpResponse(response)
 
+
+@csrf_exempt
 def getpaymentdetails(request):
     if request.method =="GET" :
         detailsway = json.loads(request.body)
