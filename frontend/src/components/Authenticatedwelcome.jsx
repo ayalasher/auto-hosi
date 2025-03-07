@@ -51,7 +51,7 @@ export default function Authnticatedwelcome() {
           <div className={styles.sgc1}>
             <p className={styles.heading2}>Welcome </p>
             <p>
-              <b>Username:</b>
+              <b>Username:dadadada</b>
             </p>
             <p> {userdatafromredux.userdata.username} </p>
             <p className={styles.textstyling}>
