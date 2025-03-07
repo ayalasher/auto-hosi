@@ -9,9 +9,13 @@ import { useState } from "react";
 // import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setuser } from "../redux/store";
 
 export default function Signuo() {
   // Efficient usState for all the data items...
+
+  const dispatch = useDispatch();
   const [userdata, setUserdata] = useState({
     username: "",
     useremail: "",
@@ -42,7 +46,8 @@ export default function Signuo() {
           }
         );
         console.log("Response", response.data);
-        navigation("/Home", {
+        dispatch(setuser(response.data));
+        navigation("/Home/patients", {
           state: {
             userdata: response.data.userdata,
           },
@@ -110,16 +115,19 @@ export default function Signuo() {
           <br />
           <div className={styles.iconinputcontainer}>
             <FaUserMd size={20} color="#7f8c98" />
-            <input
-              className={styles.inputs}
-              type="text"
-              //   value=""
-              placeholder="Enter your role"
+            <select
               onChange={(e) =>
                 setUserdata({ ...userdata, userrole: e.target.value })
               }
-              required
-            />
+              className={styles.inputs}
+              name="userrole"
+              id="userrole"
+            >
+              <option value="Admin">Admin</option>
+              <option value="doctor">Doctor</option>
+              <option value="nurse">Nurse</option>
+              <option value="Lab technician">Lab Technician</option>
+            </select>
           </div>
 
           <br />

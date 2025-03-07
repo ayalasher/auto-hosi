@@ -9,12 +9,27 @@ import Sidebar from "./Sidebar";
 import { Outlet } from "react-router-dom";
 import Patients from "./Patients";
 import { useSelector } from "react-redux";
+import axios from "axios";
 export default function Authnticatedwelcome() {
   const [section, setSection] = useState("");
   const location = useLocation();
   const navigate = useNavigate();
 
   const userdatafromredux = useSelector((state) => state.userdata);
+
+  async function userlogout() {
+    try {
+      const reponse = await axios.get("http://localhost:8000/user/logout/", {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      console.log(reponse.data);
+      navigate("/login");
+    } catch (error) {
+      console.log(`Error${error}`);
+    }
+  }
 
   //   function patialrendering() {
   //     if (location.pathname == "/home") {
@@ -46,12 +61,13 @@ export default function Authnticatedwelcome() {
           </div>
 
           <div className={styles.sgc2}>
-            <button className={styles.topbuttons}>
+            <button title="User profile" className={styles.topbuttons}>
               {" "}
               <FaUser color={"#CBCBCB"} size={25} />{" "}
             </button>
             <button
-              // onClick={alert("hakuna mchezo raondiii")}
+              title="log out"
+              onClick={userlogout}
               className={styles.topbuttons}
             >
               {" "}

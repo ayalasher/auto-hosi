@@ -86,16 +86,19 @@ export default function Login() {
           <br />
           <div className={styles.iconinputcontainer}>
             <FaUserMd size={20} color="#7f8c98" />
-            <input
-              className={styles.inputs}
-              type="text"
-              //   value=""
-              placeholder="Enter your role"
-              required
+            <select
               onChange={(e) =>
                 setuserdata({ ...userdata, userrole: e.target.value })
               }
-            />
+              className={styles.inputs}
+              name="userrole"
+              id="userrole"
+            >
+              <option value="Admin">Admin</option>
+              <option value="doctor">Doctor</option>
+              <option value="nurse">Nurse</option>
+              <option value="Lab technician">Lab Technician</option>
+            </select>
           </div>
 
           <br />

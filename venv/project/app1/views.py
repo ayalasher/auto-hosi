@@ -58,6 +58,7 @@ def systemlogin(request):
     #     return JsonResponse({"message":"Error logging user in"})
 
 
+@csrf_exempt
 def systemlogout(request):
     logout(request)
     return JsonResponse({"message":"SUCCESS","status":status.HTTP_200_OK})
