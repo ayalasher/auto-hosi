@@ -1,0 +1,304 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
+
+body {
+  font-family: "Roboto", sans-serif;
+  margin: 1px;
+  padding: 1px;
+  width: auto;
+  /* margin: 0;
+  padding: 0; */
+}
+
+/* mobile phones */
+@media screen and (min-width: 310px) and (max-width: 450px) {
+  .heading {
+    margin-left: 30px !important ;
+    margin-right: 30px !important ;
+    margin-top: 30px !important ;
+  }
+
+  .heading2 {
+    margin-left: 15px !important ;
+    margin-right: 15px !important ;
+  }
+}
+
+/* tablets */
+@media screen and (min-width: 451px) and (max-width: 1180px) {
+}
+
+.appclass {
+  width: 100vw;
+  height: 100vh;
+}
+
+.loginscreen {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  /* padding-left: 50px;
+  padding-right: 50px; */
+  align-items: center;
+  justify-content: center;
+}
+
+.loginform {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 424px;
+  /* background-color: green; */
+}
+
+.fieldset {
+  width: 100%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border-radius: 15px;
+  /* padding-left: 10px;
+  padding-right: 10px; */
+  /* margin-right: 10px;
+  margin-left: 10px; */
+}
+
+.labels {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.inputs {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  width: 90%;
+  border-radius: 10px;
+  border: none;
+  background-color: #cbcbcb;
+}
+
+.iconinputcontainer {
+  display: flex;
+  flex-direction: row;
+  background-color: #cbcbcb;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+}
+
+.loginsignupbutton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: RGB(56 99 255);
+  border: none;
+  border-radius: 10px;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 7px;
+  padding-bottom: 7px;
+}
+
+.loginsignupbutton:hover {
+  background-color: #7f9bff;
+}
+
+.bottomsection {
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.loginsignupbutton2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: black;
+  text-decoration: none;
+  border: none;
+  border-radius: 10px;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 7px;
+  padding-bottom: 7px;
+  color: white;
+}
+
+.welcomescreen {
+  display: flex;
+  flex-direction: column;
+  /* width: 100%; */
+  /* background-color: green; */
+  height: 100vh;
+}
+
+.topsection {
+  display: flex;
+  flex-direction: column;
+  /* margin-left: 500px; */
+}
+
+.heading {
+  margin-left: 100px;
+  margin-right: 100px;
+  margin-top: 30px;
+}
+
+.heading2 {
+  margin-left: 10px;
+  margin-right: 90px;
+}
+
+.somethinggood {
+  display: flex;
+  flex-direction: row;
+  /* align-items: flex-start;
+  justify-content: flex-start; */
+  /* justify-content: space-around; */
+  text-align: center;
+  padding: 10px;
+}
+
+.textstyling {
+  margin-left: 35px;
+}
+
+.sgc1 {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: center;
+  text-align: center;
+  padding: 10px;
+  width: 100%;
+}
+
+.sgc2 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 10px;
+  width: 100%;
+}
+
+.topbuttons {
+  background-color: white;
+  border: none;
+  padding: 15px;
+}
+
+.hrline {
+  width: 100%;
+  height: 0px;
+  background-color: black;
+  border: 1px solid black;
+}
+
+.middlesection {
+  /* flex: 1; */
+  display: flex;
+  flex-direction: row;
+  width: 50%;
+  height: 100%;
+  /* background-color: #cbcbcb; */
+  /* padding: 15px; */
+}
+
+.sidebartxt {
+  margin-left: 15px;
+}
+
+.somesection0 {
+  display: flex;
+  flex-direction: column;
+  background-color: #cbcbcb;
+  width: 35%;
+  /* padding: 15px; */
+}
+.somesection {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  /* Horizontal */
+  justify-content: flex-start;
+  padding: 10px;
+  text-decoration: none;
+  /* width: 100%;
+  height: 100%; */
+}
+
+.somesection:hover {
+  /* display: flex;
+  flex-direction: row;
+  align-items: center; */
+  /* Horizontal */
+  /* justify-content: flex-start; */
+  background-color: #e3e3e3;
+  /* padding: 10px; */
+  /* padding-top: 10px;
+  padding-bottom: 10px; */
+  /* width: 100%;
+  height: 100%; */
+}
+.middlescetionparent {
+  display: flex;
+  flex-direction: row;
+}
+
+.linkbtns {
+  /* display: flex;
+  align-items: center;
+  justify-content: center; */
+  background-color: #3863ff;
+  border: none;
+  border-radius: 10px;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 7px;
+  padding-bottom: 7px;
+  text-decoration: none;
+  margin-left: 10px;
+}
+
+.linkbtns:hover {
+  background-color: #7f9bff;
+  text-decoration: none;
+}
+
+.somesection0_2 {
+  width: 80%;
+  /* width: 100vh; */
+  /* background-color: yellow; */
+}
+
+.logintousesystem {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+  height: 100vh;
+}
+
+.logintxt {
+  font-size: larger;
+  font-weight: bolder;
+  text-align: start;
+  margin-right: 70px;
+}
+
+.authenticatedwelcomemiddlesection {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 100%;
+}
