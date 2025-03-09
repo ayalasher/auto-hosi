@@ -69,15 +69,20 @@ def systemlogout(request):
 def registerpatient(request):
     if request.method == "POST":
         way = json.loads(request.body)
-        first_name = way.get("firtsname")
+        first_name = way.get("firstname")
         lastname = way.get("lastname")
         age = way.get("age")
         gender = way.get("gender")
         phone_number = way.get("phone_number")
-        newuser = Patientdata(first_name=first_name,lastname=lastname,age=age,gender=gender , phone_number =phone_number )
+        newuser = Patientdata(first_name=first_name,last_name =lastname,age=age,gender=gender , phone_number =phone_number )
         newuser.save()
-        usersaved = Patientdata.objects.get(first_name=first_name , last_name = lastname)
-        return JsonResponse({"new user":usersaved,"status":status.HTTP_201_CREATED})
+        usersaved = Patientdata.objects.get(first_name=first_name,last_name =lastname)
+        return JsonResponse({"new user": {
+            "first_name":usersaved.first_name,
+            "last_name":usersaved.last_name,
+            "age ":usersaved.age,
+            "gender":usersaved.gender, 
+        } ,"status":status.HTTP_201_CREATED})
 
     else:
         return JsonResponse({"message":"Invalid HTTP request"})

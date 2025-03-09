@@ -122,6 +122,7 @@ export default function Signuo() {
               className={styles.inputs}
               name="userrole"
               id="userrole"
+              required
             >
               <option value="Admin">Admin</option>
               <option value="doctor">Doctor</option>

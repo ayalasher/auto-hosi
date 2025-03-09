@@ -4,7 +4,7 @@ import axios from "axios";
 import hall1 from "../Images/hospitalhall1.jpg";
 
 export default function Registerpatients() {
-  const patientdata = useState({
+  const [patientdata, setPatientdata] = useState({
     firstname: "",
     lastname: "",
     age: "",
@@ -16,8 +16,23 @@ export default function Registerpatients() {
     e.preventDefault();
   }
 
-  function registerpatient() {
-    alert("registering patient");
+  async function registerpatient() {
+    try {
+      const response = await axios.post(
+        "http://localhost:8000/patient/patientregistration/",
+        patientdata,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      console.log(response.data);
+      alert("Patient registered");
+    } catch (error) {
+      console.log("Error", error);
+    }
+    // alert("registering patient");
   }
   return (
     <div className={styles.registerpatientspage}>
@@ -47,15 +62,24 @@ export default function Registerpatients() {
               <div>
                 <input
                   placeholder="First name"
+                  required
                   className={styles.rginput}
                   type="text"
-                  name=""
-                  id=""
+                  onChange={(e) =>
+                    setPatientdata({
+                      ...patientdata,
+                      firstname: e.target.value,
+                    })
+                  }
                 />
                 <input
-                  placeholder="Second name"
+                  placeholder="Last name"
+                  required
                   className={styles.rginput}
                   type="text"
+                  onChange={(e) =>
+                    setPatientdata({ ...patientdata, lastname: e.target.value })
+                  }
                 />
               </div>
             </div>
@@ -68,16 +92,25 @@ export default function Registerpatients() {
                 <input
                   placeholder="Enter age"
                   className={styles.rginput}
-                  type="text"
-                  name=""
-                  id=""
+                  required
+                  type="number"
+                  onChange={(e) =>
+                    setPatientdata({ ...patientdata, age: e.target.value })
+                  }
                 />
-                {/* <input
-                  placeholder="What is your gender"
+                <select
+                  onChange={(e) =>
+                    setPatientdata({ ...patientdata, gender: e.target.value })
+                  }
                   className={styles.rginput}
-                  type="text"
-                /> */}
-                <select className={styles.rginput} name="Gender" id="Gender">
+                  name="Gender"
+                  id="Gender"
+                  required
+                  defaultValue=""
+                >
+                  <option value="" disabled>
+                    Select Gender
+                  </option>
                   <option value="Male">Male</option>
                   <option value="Female">Female</option>
                 </select>
@@ -90,12 +123,19 @@ export default function Registerpatients() {
               <div>
                 <input
                   placeholder="+254"
+                  required
                   className={styles.rginput}
-                  type="text"
-                  name=""
-                  id=""
+                  type="tel"
+                  // value={+254}
+                  onChange={(e) =>
+                    setPatientdata({
+                      ...patientdata,
+                      phone_number: e.target.value,
+                    })
+                  }
                 />
                 <button
+                  type="submit"
                   onClick={registerpatient}
                   className={styles.registerbtn}
                 >
