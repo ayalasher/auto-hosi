@@ -1,12 +1,13 @@
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useLocation } from "react-router-dom";
-import { FaHeartCirclePlus } from "react-icons/fa6";
+import { FaBlackTie, FaHeartCirclePlus } from "react-icons/fa6";
 import { FaUser } from "react-icons/fa";
 import { MdLogout } from "react-icons/md";
 import styles from "./styles.module.css";
 import Sidebar from "./Sidebar";
 import { Link } from "react-router-dom";
+import ReactLoading from "react-loading";
 export default function Welcome() {
   const location = useLocation();
   const navigate = useNavigate();
@@ -62,6 +63,15 @@ export default function Welcome() {
       <div className={styles.logintousesystem}>
         {/* <Sidebar /> */}
         <p className={styles.logintxt}>Log in to use system. </p>
+        <p>
+          {/* {" "}
+          <ReactLoading
+            type={"spinningBubbles"}
+            color={FaBlackTie}
+            height={20}
+            width={20}
+          />{" "} */}
+        </p>
       </div>
 
       {/* </div> */}

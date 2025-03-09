@@ -206,7 +206,7 @@ body {
   /* flex: 1; */
   display: flex;
   flex-direction: row;
-  width: 50%;
+  /* width: 50%; */
   height: 100%;
   /* background-color: #cbcbcb; */
   /* padding: 15px; */
@@ -220,7 +220,7 @@ body {
   display: flex;
   flex-direction: column;
   background-color: #cbcbcb;
-  width: 35%;
+  /* width: 40%; */
   /* padding: 15px; */
 }
 .somesection {
@@ -301,4 +301,41 @@ body {
   flex-direction: row;
   width: 100%;
   height: 100%;
+}
+
+.registerpatientspage {
+  /* width: 100%; */
+  /* height: 100%;  */
+}
+
+.rgptopsection {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  margin-top: 30px;
+  width: 100%;
+  margin-left: 30px;
+  margin-right: 30px;
+}
+
+.rgtstext {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  margin-right: 100px;
+}
+
+.hallimage1 {
+  border-radius: 10px;
+  width: 60%;
+  height: auto;
+}
+
+.rgtsimg {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  margin-left: 100px;
 }
