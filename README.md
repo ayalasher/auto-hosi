@@ -1,9 +1,9 @@
-Automation of Hospital operatios and handling of user data.
-Deal away with physical records for patients for all entities that intrecat with them.
+Automation of Hospital operations and handling of user data.
+Deal away with physical records for patients for all entities that interact with them.
 
 **Tech stack**
 react
 django
-posgres
-vercel for hosting the frontend
+sqlite
+vercel for hosting the frontend hosting.
 azure / heroku -- backend hosting
