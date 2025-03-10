@@ -92,6 +92,7 @@ def registerpatient(request):
 # get patients data....
 @csrf_exempt
 def getpatientslist(request):
+    # print("Here")
     allusers= Patientdata.objects.all()
     data = serialize("json",allusers,fields=("first_name","last_name","age","gender","phone_number"))
     return HttpResponse(data, content_type="application/json", status=status.HTTP_200_OK )

@@ -1,8 +1,23 @@
 import styles from "./styles.module.css";
 import axios from "axios";
 import patient1 from "../Images/patient1.jpg"
+import { useState, useEffect } from "react";
 
 export default function Patients() {
+  const [isLoading, setIsloading] = useState(true)
+
+
+  useEffect(() => {
+    axios.get("http://localhost:8000/patient/patientslist/").then((response) => {
+      console.log(response.data);
+    }).catch((error) => {
+      console.log(`Error:${error}`);
+
+    })
+
+  }, [])
+
+
   return (
     <div className={styles.patientssection}  >
       <div className={styles.ptopsetion} >
@@ -13,7 +28,13 @@ export default function Patients() {
       </div>
 
       <div className={styles.pmiddlesection} >
-
+        <div className={styles.titleststdiv} >
+          <p>First name</p>
+          <p>Last name</p>
+          <p>Age</p>
+          <p>Gender</p>
+          <p>Phone number</p>
+        </div>
       </div>
 
     </div>

@@ -423,6 +423,17 @@ body {
   width: 75%;
   background-color: #f0f0f0;
   margin: 10px;
-  padding: 10px;
+  padding: 5px;
   border-radius: 10px;
+}
+
+.titleststdiv {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  border-top: 1px solid #838383;
+  border-bottom: 1px solid #838383;
+  margin-left: 10px;
+  margin-right: 10px;
 }
