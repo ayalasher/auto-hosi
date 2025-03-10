@@ -457,3 +457,27 @@ body {
   align-items: center;
   justify-content: center;
 }
+
+.techsupportsection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 70%;
+  justify-content: flex-start;
+}
+
+.footerstyling {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 15px;
+  background-color: #3863ff;
+}
+
+.footercontent {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
