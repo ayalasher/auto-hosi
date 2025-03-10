@@ -14,7 +14,7 @@ const userdataslice = createSlice({
 // creating the slice
 const patientdataslice = createSlice({
   name: "patientdata",
-  initialState: [],
+  initialState: null,
   reducers: {
     setpatientsdata: (state, action) => {
       return action.payload;

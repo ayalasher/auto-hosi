@@ -437,3 +437,23 @@ body {
   margin-left: 10px;
   margin-right: 10px;
 }
+
+.itemsdiv {
+  display: flex;
+  flex-direction: column;
+  /* width: 100%; */
+  /* align-items: center; */
+  /* justify-content: space-evenly; */
+}
+
+.innerrows {
+  display: flex;
+  flex-direction: row;
+  /* align-items: center; */
+  justify-content: space-around;
+}
+.Loadingspinner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
