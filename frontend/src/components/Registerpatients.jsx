@@ -28,7 +28,14 @@ export default function Registerpatients() {
         }
       );
       console.log(response.data);
-      alert("Patient registered");
+      setPatientdata({
+        firstname: "",
+        lastname: "",
+        age: "",
+        gender: "",
+        phone_number: "",
+      })
+      // alert("Patient registered");
     } catch (error) {
       console.log("Error", error);
     }
@@ -63,6 +70,7 @@ export default function Registerpatients() {
                 <input
                   placeholder="First name"
                   required
+                  value={patientdata.firstname}
                   className={styles.rginput}
                   type="text"
                   onChange={(e) =>
@@ -75,6 +83,7 @@ export default function Registerpatients() {
                 <input
                   placeholder="Last name"
                   required
+                  value={patientdata.lastname}
                   className={styles.rginput}
                   type="text"
                   onChange={(e) =>
@@ -92,6 +101,7 @@ export default function Registerpatients() {
                 <input
                   placeholder="Enter age"
                   className={styles.rginput}
+                  value={patientdata.age}
                   required
                   type="number"
                   onChange={(e) =>
@@ -103,6 +113,7 @@ export default function Registerpatients() {
                     setPatientdata({ ...patientdata, gender: e.target.value })
                   }
                   className={styles.rginput}
+                  value={patientdata.gender}
                   name="Gender"
                   id="Gender"
                   required
@@ -125,6 +136,7 @@ export default function Registerpatients() {
                   placeholder="+254"
                   required
                   className={styles.rginput}
+                  value={patientdata.phone_number}
                   type="tel"
                   // value={+254}
                   onChange={(e) =>
