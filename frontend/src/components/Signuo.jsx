@@ -123,7 +123,11 @@ export default function Signuo() {
               name="userrole"
               id="userrole"
               required
+              defaultValue=""
             >
+              <option disabled value="">
+                Select role
+              </option>
               <option value="Admin">Admin</option>
               <option value="doctor">Doctor</option>
               <option value="nurse">Nurse</option>

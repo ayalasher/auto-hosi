@@ -94,7 +94,11 @@ export default function Login() {
               name="userrole"
               id="userrole"
               required
+              defaultValue=""
             >
+              <option disabled value="">
+                Select Role
+              </option>
               <option value="Admin">Admin</option>
               <option value="doctor">Doctor</option>
               <option value="nurse">Nurse</option>
