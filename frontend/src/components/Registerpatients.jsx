@@ -35,7 +35,7 @@ export default function Registerpatients() {
         gender: "",
         phone_number: "",
       })
-      // alert("Patient registered");
+      alert("Patient registered");
     } catch (error) {
       console.log("Error", error);
     }
