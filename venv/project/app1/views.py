@@ -104,8 +104,8 @@ def getpatientslist(request):
 
 
 @csrf_exempt
-def patientserach(request):
-    if request.method == "GET":
+def patientsearch(request):
+    if request.method == "POST":
         way = json.loads(request.body)
         first_name = way.get("firstname")
         last_name = way.get("lastname")
