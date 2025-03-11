@@ -13,17 +13,17 @@ export default function Sidebar() {
   return (
     <div className={styles.middlesection}>
       <div className={styles.somesection0}>
-        <Link to={"/Home/patient"} className={styles.somesection}>
-          <FaUserInjured size={25} />
-          <p className={styles.sidebartxt}>Patient</p>
+        <Link to={"/Home/patients"} className={styles.somesection}>
+          <FaHospitalUser size={25} />
+          <p className={styles.sidebartxt}>Patients</p>
         </Link>
         <Link to={"/Home/patient-search"} className={styles.somesection}>
           <LuUserSearch size={25} />
           <p className={styles.sidebartxt}>Patient search</p>
         </Link>
-        <Link to={"/Home/patients"} className={styles.somesection}>
-          <FaHospitalUser size={25} />
-          <p className={styles.sidebartxt}>Patients</p>
+        <Link to={"/Home/patient"} className={styles.somesection}>
+          <FaUserInjured size={25} />
+          <p className={styles.sidebartxt}>Patient</p>
         </Link>
         <Link to={"/Home/register-patients"} className={styles.somesection}>
           <TiUserAdd size={25} />

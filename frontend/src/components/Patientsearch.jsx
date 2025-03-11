@@ -1,15 +1,29 @@
 import styles from "./styles.module.css"
 import { useState } from "react"
 import axios from "axios"
+import { useLocation } from "react-router-dom"
+import { Link } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 
 export default function Patientsearch() {
-
+    const [searchresults, setSearchresults] = useState({})
     const [searchdata, setSearchData] = useState({
         firstname: "",
         lastname: "",
     })
-
     const [searched, setSerached] = useState(false)
+
+    const navigateto = useNavigate();
+
+
+    function navigatetopatientscreen() {
+
+        navigateto("/Home/patient", {
+            state: {
+                USERDATA: searchresults
+            }
+        })
+    }
 
     async function patientSearch() {
         try {
@@ -18,8 +32,13 @@ export default function Patientsearch() {
                     "Content-Type": "appication/json"
                 }
             })
+            setSearchresults(response.data)
             setSerached(true)
-            console.log(response.data);
+            // console.log(response.data);
+            setSearchData({
+                firstname: "",
+                lastname: "",
+            })
 
         } catch (error) {
             console.log("Error", error);
@@ -40,8 +59,17 @@ export default function Patientsearch() {
             </div>
 
         </div>
-        <div>
-            <p>{searched ? "Search results" : "You have not searched for any Patient  data"}</p>
+        <div className={styles.somemaindiv} >
+            <div className={styles.thesearchresults} >{searched ? <div className={styles.searchresultslink} >
+                <p className={styles.linktxt} > {searchresults.userdata.first_name} </p>
+                <p className={styles.linktxt}  >  {searchresults.userdata.last_name} </p>
+                <p className={styles.linktxt}   > {searchresults.userdata.age} </p>
+                <p className={styles.linktxt}  > {searchresults.userdata.gender} </p>
+                <p className={styles.linktxt}  > {searchresults.userdata.registration_date} </p>
+                <button onClick={navigatetopatientscreen} className={styles.loginsignupbutton} >View patient </button>
+            </div> : <p>You have not searched for any Patient  data</p>}</div>
+
         </div>
+        {/* <button></button> */}
     </div>
 }

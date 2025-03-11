@@ -3,7 +3,6 @@ import { MdOutlineContactPhone } from "react-icons/md";
 
 export default function Techsupport() {
   return (
-    
     <div className={styles.techsupportsection} >
       {/* <p> tech Support</p> */}
       <h3>Contact me</h3>
