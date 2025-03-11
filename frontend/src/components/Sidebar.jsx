@@ -5,12 +5,17 @@ import { FaCalendarPlus } from "react-icons/fa";
 import { GiSpanner } from "react-icons/gi";
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
+import { FaUserInjured } from "react-icons/fa";
 
 export default function Sidebar() {
   const location = useLocation();
   return (
     <div className={styles.middlesection}>
       <div className={styles.somesection0}>
+        <Link to={"/Home/patient"} className={styles.somesection}>
+          <FaUserInjured size={25} />
+          <p className={styles.sidebartxt}>Patient</p>
+        </Link>
         <Link to={"/Home/patients"} className={styles.somesection}>
           <FaHospitalUser size={25} />
           <p className={styles.sidebartxt}>Patients</p>

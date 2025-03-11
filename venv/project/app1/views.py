@@ -14,6 +14,7 @@ def greetings(request):
 
 
 # Hospital personnel......
+# frontend done
 @csrf_exempt
 def createuser(request):
     if request.method == "POST" :
@@ -35,6 +36,7 @@ def createuser(request):
     
 
 
+# Frontend done
 @csrf_exempt
 def systemlogin(request):
     if request.method == "POST" :
@@ -58,13 +60,15 @@ def systemlogin(request):
     #     return JsonResponse({"message":"Error logging user in"})
 
 
+
+# Frontend done
 @csrf_exempt
 def systemlogout(request):
     logout(request)
     return JsonResponse({"message":"SUCCESS","status":status.HTTP_200_OK})
 
 
-
+# Frontend done
 @csrf_exempt
 def registerpatient(request):
     if request.method == "POST":
@@ -90,6 +94,7 @@ def registerpatient(request):
     
 
 # get patients data....
+# Frontend done...
 @csrf_exempt
 def getpatientslist(request):
     # print("Here")
@@ -103,7 +108,7 @@ def patientserach(request):
     if request.method == "GET":
         way = json.loads(request.body)
         first_name = way.get("firstname")
-        last_name = way.get("firstname")
+        last_name = way.get("lastname")
         Singlepatient = Patientdata.objects.get(first_name=first_name, last_name=last_name)
         data = serialize("json" , Singlepatient , fields=("first_name" , "last_name" , "age"  , "gender" ,"registration_date " , "phone_number" ) )
         return HttpResponse(data , content_type="application/json" , status = status.HTTP_200_OK)

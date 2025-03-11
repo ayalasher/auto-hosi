@@ -42,9 +42,9 @@ class MedicalTest(models.Model):
     bactrerial_infection = models.BooleanField(default=False)
     viral_infetion = models.BooleanField(default=False)
     Fungal_infetion = models.BooleanField(default=False)
-    red_blood_cells_conc = models.IntegerField()
-    white_blood_cells_conc = models.IntegerField()
-    platelets_conc = models.IntegerField()
+    red_blood_cells_conc = models.IntegerField() #cells/µliter cells per micro-liter...
+    white_blood_cells_conc = models.IntegerField()  #cells/µliter cells per micro-liter...
+    platelets_conc = models.IntegerField() #platelets/µliter platelets per micro-liter...
 
 
 

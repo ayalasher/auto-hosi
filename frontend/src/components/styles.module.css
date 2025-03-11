@@ -390,32 +390,42 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* justify-content: center; */
+  justify-content: center;
 }
 .ptopsetion {
   display: flex;
   flex-direction: row;
   align-items: center;
-  /* justify-content: space-evenly; */
+  justify-content: space-between;
   margin: 20px;
-  /* width: 70%; */
+  width: 100%;
 }
 
 .pimagestyle {
-  width: 15%;
+  width: 50%;
   height: auto;
   border-radius: 10px;
 }
 
 .ptxtdiv {
   display: flex;
+  flex: 1;
   align-items: center;
   justify-content: flex-start;
 }
-.pimgdiv {
+
+.ptxtdiv2 {
   display: flex;
+  flex: 1;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
+}
+.pimgdiv {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: flex-end;
 }
 .pmiddlesection {
   display: flex;
@@ -431,7 +441,7 @@ body {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: space-around;
   border-top: 1px solid #838383;
   border-bottom: 1px solid #838383;
   margin-left: 10px;
@@ -450,6 +460,7 @@ body {
   display: flex;
   flex-direction: row;
   /* align-items: center; */
+  text-decoration: none;
   justify-content: space-around;
 }
 .Loadingspinner {
@@ -480,4 +491,23 @@ body {
   flex-direction: row;
   align-items: center;
   justify-content: center;
+}
+
+.patienttopsection {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.aninnerdiv0 {
+  display: flex;
+  flex-direction: row;
+}
+
+.aninnerdiv {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
 }
