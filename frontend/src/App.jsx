@@ -12,6 +12,7 @@ import Registerpatients from "./components/Registerpatients.jsx";
 import Myappointments from "./components/Myappointments.jsx";
 import Techsupport from "./components/Techsupport.jsx";
 import Patient from "./components/Patient.jsx";
+import Patientsearch from "./components/Patientsearch.jsx";
 
 function App() {
   // const [count, setCount] = useState(0);
@@ -23,6 +24,7 @@ function App() {
         <Route path="/Home" element={<Authnticatedwelcome />}>
           <Route index path={"/Home/patient"} element={<Patient />} />
           <Route index path={"/Home/patients"} element={<Patients />} />
+          <Route index path={"/Home/patient-search"} element={<Patientsearch />} />
           <Route path="register-patients" element={<Registerpatients />} />
           <Route path="appointments" element={<Myappointments />} />
           <Route path="tech-support" element={<Techsupport />} />

@@ -6,6 +6,7 @@ import { GiSpanner } from "react-icons/gi";
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { FaUserInjured } from "react-icons/fa";
+import { LuUserSearch } from "react-icons/lu";
 
 export default function Sidebar() {
   const location = useLocation();
@@ -15,6 +16,10 @@ export default function Sidebar() {
         <Link to={"/Home/patient"} className={styles.somesection}>
           <FaUserInjured size={25} />
           <p className={styles.sidebartxt}>Patient</p>
+        </Link>
+        <Link to={"/Home/patient-search"} className={styles.somesection}>
+          <LuUserSearch size={25} />
+          <p className={styles.sidebartxt}>Patient search</p>
         </Link>
         <Link to={"/Home/patients"} className={styles.somesection}>
           <FaHospitalUser size={25} />
