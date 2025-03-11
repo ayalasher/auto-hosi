@@ -20,7 +20,7 @@ export default function Patientsearch() {
 
         navigateto("/Home/patient", {
             state: {
-                USERDATA: searchresults
+                USERDATA: searchresults.userdata
             }
         })
     }
