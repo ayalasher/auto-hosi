@@ -110,8 +110,15 @@ def patientsearch(request):
         first_name = way.get("firstname")
         last_name = way.get("lastname")
         Singlepatient = Patientdata.objects.get(first_name=first_name, last_name=last_name)
-        data = serialize("json" , Singlepatient , fields=("first_name" , "last_name" , "age"  , "gender" ,"registration_date " , "phone_number" ) )
-        return HttpResponse(data , content_type="application/json" , status = status.HTTP_200_OK)
+        # data = serialize("json" , Singlepatient , fields=("first_name" , "last_name" , "age"  , "gender" ,"registration_date " , "phone_number" ) )
+        # return HttpResponse(data , content_type="application/json" , status = status.HTTP_200_OK)
+        return JsonResponse({"userdata":{
+             "first_name":Singlepatient.first_name,
+             "last_name":Singlepatient.last_name,
+             "age":Singlepatient.age,
+             "gender":Singlepatient.gender,
+             "registration_date":Singlepatient.registration_date,
+        } , "status":status.HTTP_200_OK })
     else:
         return JsonResponse({"message":"Invaid HTTP method"})
 
