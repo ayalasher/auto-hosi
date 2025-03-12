@@ -21,6 +21,7 @@ export default function Patient() {
                 <div className={styles.IOYRTEE} ><b>Age: </b> <p>{USERDATA.age}</p>  </div>
                 <div className={styles.IOYRTEE} ><b>Gender: </b> <p>{USERDATA.gender}</p>  </div>
                 <div className={styles.IOYRTEE} ><b>Registered on: </b> <p>{USERDATA.registration_date}</p>  </div>
+                <div className={styles.IOYRTEE} ><b>Patient ID: </b> <p>{USERDATA.uniqueidetifier}</p>  </div>
                 {/* <p>Data fetched succesfully</p> */}
             </div> : <div className={styles.patientspageagain} ><p>Search for a patient to get the patients data</p></div>}
         </div>

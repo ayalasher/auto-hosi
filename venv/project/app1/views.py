@@ -119,6 +119,7 @@ def patientsearch(request):
              "age":Singlepatient.age,
              "gender":Singlepatient.gender,
              "registration_date":Singlepatient.registration_date,
+             "uniqueidetifier":Singlepatient.pk,
         } , "status":status.HTTP_200_OK })
     else:
         return JsonResponse({"message":"Invaid HTTP method"})
