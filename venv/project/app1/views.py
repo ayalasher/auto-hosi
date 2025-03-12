@@ -103,6 +103,7 @@ def getpatientslist(request):
     return HttpResponse(data, content_type="application/json", status=status.HTTP_200_OK )
 
 
+# Frontend done
 @csrf_exempt
 def patientsearch(request):
     if request.method == "POST":
