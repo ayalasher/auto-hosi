@@ -136,10 +136,11 @@ def uploadpatientdiagnosis(request):
         patientID = patientID-1
         patient_diagnosis = way.get("patient diagnosis")
         patient_tests = way.get("patient tests")
-        currentpatient = Patientdata.objects.all()[patientID]
-        patient_results= MedicalTest.objects.all()[currentpatient]
+        currentpatient = Patientdata.objects.get(pk=patientID)
+        # patient_results= MedicalTest.objects.get(patient_details=currentpatient)
         uploadeddiagnosis = Diagnosis( patient_details=patientdetails ,diagnosis=patient_diagnosis,tests=patient_tests)
         uploadeddiagnosis.save()
+        # userdiagnosis =Diagnosis.objects.get(patient_details=patientdetails)
         return HttpResponse(uploadeddiagnosis , content_type="application/json" , status=status.HTTP_201_CREATEDs)
     else:
         return JsonResponse({"message":"Invalid HTTP method"})
